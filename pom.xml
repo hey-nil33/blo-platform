@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+           http://maven.apache.org/POM/4.0.0
+           https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 公司级 Root POM -->
+    <groupId>com.blo</groupId>
+    <artifactId>blo-platform</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>BLO Platform</name>
+    <description>Company-wide parent POM for BLO products frameworks</description>
+
+    <!-- Java 21 & Spring Boot 3.5.x 基线 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.0</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>21</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- 如需覆盖 logback 等安全版本时在此处设置
+        <logback.version>1.5.16</logback.version>
+        -->
+    </properties>
+
+    <!-- 公司级子模块：blo-comm（框架） + ArcX 产品线 -->
+    <modules>
+
+        <!-- BLO 通信框架 -->
+        <module>blo-comm-core</module>
+        <module>blo-comm-server</module>
+        <module>blo-comm-client</module>
+
+        <!-- ArcX SaaS 产品
+        <module>arcx-service</module>
+        <module>arcx-batch</module>-->
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM 已经自动包含，不需要额外写 -->
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <!-- Java 21 编译器设置（Boot 已经默认 OK） -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <release>${java.version}</release>
+                    </configuration>
+                </plugin>
+
+                <!-- Spring Boot 打包插件：ArcX 服务会用到 -->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <layers>
+                            <enabled>true</enabled>
+                        </layers>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencies>
+        <!-- Lombok（供各模块使用） -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>
