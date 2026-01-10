@@ -38,9 +38,9 @@
     <modules>
 
         <!-- BLO 通信框架 -->
-        <module>blo-comm-core</module>
-        <module>blo-comm-server</module>
-        <module>blo-comm-client</module>
+        <module>../blo-comm-core</module>
+        <module>../blo-comm-server</module>
+        <module>../blo-comm-client</module>
 
         <!-- ArcX SaaS 产品
         <module>arcx-service</module>
