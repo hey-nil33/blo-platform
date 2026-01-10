@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.9</version>
         <relativePath/>
     </parent>
 
@@ -48,9 +48,30 @@
     </modules>
 
     <dependencyManagement>
-        <dependencies>
-            <!-- Spring Boot BOM 已经自动包含，不需要额外写 -->
-        </dependencies>
+    <dependencies>
+        <!-- BLO 通信フレームワーク（社内モジュール） -->
+        <dependency>
+            <groupId>com.blo</groupId>
+            <artifactId>blo-comm-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.blo</groupId>
+            <artifactId>blo-comm-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.blo</groupId>
+            <artifactId>blo-comm-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
     </dependencyManagement>
 
     <build>
@@ -80,14 +101,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <dependencies>
-        <!-- Lombok（供各模块使用） -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-    </dependencies>
-
 </project>
