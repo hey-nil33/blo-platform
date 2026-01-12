@@ -20,8 +20,11 @@
 
 ルート（このディレクトリ）で以下を実行します。
 
+> `blo-comm-*` を ArcX 側（`arcx-service` / `arcx-batch`）から参照するため、**先に install しておく**のが安全です。
+
 ```bash
-mvn clean install
+cd blo-platform
+mvn -U clean install
 ```
 
 これにより：
@@ -34,32 +37,3 @@ mvn clean install
 業務システム（arcx 等）から依存ライブラリとして利用できます。
 
 ---
-
-## 業務システムからの利用例
-
-### サーバ側（Spring Boot アプリケーション）
-
-```xml
-<dependency>
-    <groupId>com.blo</groupId>
-    <artifactId>blo-comm-server</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-</dependency>
-```
-
-### クライアント側（別 Spring Boot サービスなど）
-
-```xml
-<dependency>
-    <groupId>com.blo</groupId>
-    <artifactId>blo-comm-client</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-</dependency>
-```
-
----
-
-## 注意事項
-
-- Java 17 以上を想定しています。
-- 各モジュールの詳細な使い方は、それぞれの `README.md` を参照してください。
