@@ -1,0 +1,25 @@
+# macOS 系统文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Java 编译文件
+*.class
+*.jar
+*.war
+*.ear
+
+# 编译输出目录
+target/
+build/
+out/
+bin/
+
+# IDE 相关
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
